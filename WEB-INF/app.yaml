@@ -1,0 +1,3 @@
+application: heroku-autoscale
+version: 1
+runtime: jruby

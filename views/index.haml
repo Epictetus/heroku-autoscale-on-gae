@@ -1,0 +1,27 @@
+%h1
+  Heroku Autoscale
+
+- unless @herokus.blank?
+  %table
+    %tr
+      %td
+        Appname
+      %td
+        User
+      %td
+        NewRelic key
+    - @herokus.each do |heroku|
+      %tr
+        %td
+          = heroku.app_name
+        %td
+          = heroku.heroku_user
+        %td
+          = heroku.newrelic_key
+
+%form{:action => "/", :method => "POST"}
+  %input{:type => "text", :name => "app_name"}
+  %input{:type => "text", :name => "heroku_user"}
+  %input{:type => "text", :name => "heroku_pass"}
+  %input{:type => "text", :name => "newrelic_key"}
+  %input{:type => "submit", :value => "Submit"}
