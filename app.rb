@@ -3,6 +3,7 @@ require 'dm-core'
 require "extlib"
 require 'haml'
 require 'appengine-apis/users'
+require 'appengine-apis/urlfetch'
 
 require "active_resource"
 require "new_relic/control"
