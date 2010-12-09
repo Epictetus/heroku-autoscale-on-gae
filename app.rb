@@ -77,7 +77,7 @@ helpers do
   alias_method :h, :escape_html
 
   def login_required
-    redirect AppEngine::Users.create_login_url(request.url) unless @user
+    redirect AppEngine::Users.create_login_url(request.url) unless @current_user
   end
 end
 
