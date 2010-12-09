@@ -1,0 +1,7 @@
+* バリデーション 正しく、データ取得できるのかで判定する
+* set_dynos がエラーを返す
+** AppEngine::URLFetch::DownloadError: java.io.IOException: Timeout while fetching: https://api.heroku.com/apps/.../dynos
+* マルチユーザ対応
+* ログインが適当
+* cronの設定 xml http://goo.gl/Fh2SY
+
