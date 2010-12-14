@@ -3,4 +3,15 @@
 %html
   %head
   %body
+    %h1
+      Heroku Autoscale
+
     = yield
+
+    #footer
+      - if current_user
+        %a{:href => AppEngine::Users.create_logout_url("/")}
+          Logout
+      - else
+        %a{:href => AppEngine::Users.create_login_url("/")}
+          Login

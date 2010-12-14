@@ -88,6 +88,10 @@ helpers do
   def logger
     @logger ||= AppEngine::Logger.new
   end
+
+  def current_user
+    @current_user
+  end
 end
 
 before do
