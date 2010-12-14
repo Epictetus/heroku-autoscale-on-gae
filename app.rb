@@ -22,7 +22,7 @@ DataMapper.repository.adapter.singular_naming_convention!
 
 # Create your model class
 class Appli
-  include DataMapper::Resource
+  include DataMapper::AppEngineResource
 
   property :id, Serial
   property :user, User
@@ -99,7 +99,7 @@ before do
 end
 
 get '/' do
-  @herokus = Appli.all
+  @apps = Appli.all(:user => current_user) if current_user
   haml :index
 end
 

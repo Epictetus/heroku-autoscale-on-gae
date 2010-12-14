@@ -1,4 +1,4 @@
-- unless @herokus.blank?
+- unless @apps.blank?
   %table
     %tr
       %td
@@ -7,14 +7,14 @@
         User
       %td
         NewRelic key
-    - @herokus.each do |heroku|
+    - @apps.each do |app|
       %tr
         %td
-          = heroku.app_name
+          = app.app_name
         %td
-          = heroku.heroku_user
+          = app.heroku_user
         %td
-          = heroku.newrelic_key
+          = app.newrelic_key
 
 - if current_user
   %h2
