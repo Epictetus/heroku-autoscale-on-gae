@@ -4,6 +4,7 @@ require "extlib"
 require 'haml'
 require 'appengine-apis/users'
 require 'appengine-apis/urlfetch'
+require 'appengine-apis/logger'
 
 require "active_resource"
 require "new_relic/control"
@@ -12,9 +13,12 @@ require "new_relic_api"
 require 'heroku'
 require "heroku/command"
 
+require "fix_http_timeout_error"
+
 set :haml, :attr_wrapper => '"', :ugly => false
 
 DataMapper.setup(:default, "appengine://auto")
+DataMapper.repository.adapter.singular_naming_convention!
 
 # Create your model class
 class Appli
@@ -80,6 +84,10 @@ helpers do
   def login_required
     redirect AppEngine::Users.create_login_url(request.url) unless @current_user
   end
+
+  def logger
+    @logger ||= AppEngine::Logger.new
+  end
 end
 
 before do
@@ -102,7 +110,7 @@ end
 
 get "/alignment" do
   Appli.all.each do |app|
-    app.adjust_dyno
+    logger.info "#{app.heroku_user}:#{app.app_name}| #{app.current_dyno} => #{app.adjust_dyno}"
   end
   return "Success"
 end
