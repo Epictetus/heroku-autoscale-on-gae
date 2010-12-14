@@ -6,4 +6,4 @@
 ** AppEngine::URLFetch::DownloadError: java.io.IOException: Timeout while fetching: https://api.heroku.com/apps/.../dynos
 * ログインが適当
 * マルチユーザ対応
-
+* 必須のバリデーションやってみたけど IRB でしかきかない
